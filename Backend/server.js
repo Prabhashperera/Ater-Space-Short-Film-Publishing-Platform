@@ -5,16 +5,13 @@ import posterRoute from "./routes/posterRoute.js";
 
 dotenv.config();
 const app = express();
-app.use(express.json())
+app.use(express.json());
 
-connectDB();
+connectDB(); //Connect Mongo Atlas DB
+
+app.use("/api", posterRoute);
+
 const PORT = process.env.PORT;
-
-app.use('/api', posterRoute)
-
-
 app.listen(PORT, () => {
   console.log(`Server Started on Port ${PORT}`);
 });
-
-
