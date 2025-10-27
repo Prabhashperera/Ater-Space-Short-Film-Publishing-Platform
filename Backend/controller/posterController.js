@@ -1,5 +1,6 @@
 import creatorPostModel from "../model/creatorPostModel.js";
 
+// Create a Film Post
 export const createPost = async (req, res) => {
   try {
     const newPost = new creatorPostModel({
@@ -26,18 +27,41 @@ export const createPost = async (req, res) => {
   }
 };
 
-
+// Retrive All Film Posts
 export const getAllPosts = async (req, res) => {
-  try{
-    const data = await creatorPostModel.find()
+  try {
+    const data = await creatorPostModel.find();
     res.status(201).json({
       message: "Success",
-      data: data
-    })
-  }catch(err) {
-        res.status(500).json({
+      data: data,
+    });
+  } catch (err) {
+    res.status(500).json({
       message: "Error",
-      error: err.message
-    })
+      error: err.message,
+    });
   }
-}
+};
+
+// Update Film Post
+export const updatePost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const newData = req.body;
+
+    const updatedPost = await creatorPostModel.findByIdAndUpdate(id, newData, {
+      new: true, //Returns New Object after Update
+      runValidators: true, //Run Scehema Validations
+    });
+
+    res.status(201).json({
+      message: "Success Updated",
+      data: updatedPost,
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "Not Updated",
+      error: err.message,
+    });
+  }
+};
