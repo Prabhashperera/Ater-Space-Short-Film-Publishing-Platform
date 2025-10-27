@@ -65,3 +65,20 @@ export const updatePost = async (req, res) => {
     });
   }
 };
+
+// Delete Film Post
+export const deletePost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedPost = await creatorPostModel.findByIdAndDelete(id);
+    res.status(201).json({
+      message: "Deleted Successfully",
+      data: deletedPost,
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "Delete Failed",
+      error: err.message,
+    });
+  }
+};
