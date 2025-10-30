@@ -93,14 +93,14 @@ function SelectionPage() {
                 <div className="relative z-10 flex flex-col items-center justify-center min-h-screen p-8">
                     {/* Title */}
                     <div className="text-center mb-16 float-animation">
-                        <h1 className="text-7xl font-bold mb-4 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+                        <h1 className="text-7xl font-bold mb-4 bg-linear-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
                             Film Portal
                         </h1>
                         <p className="text-gray-400 text-xl tracking-wider">Your Gateway to Cinematic Excellence</p>
                         <div className="flex items-center justify-center gap-2 mt-4">
-                            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+                            <div className="w-12 h-0.5 bg-linear-to-r from-transparent via-purple-500 to-transparent"></div>
                             <div className="w-2 h-2 rounded-full bg-purple-500 glow-animation"></div>
-                            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+                            <div className="w-12 h-0.5 bg-linear-to-r from-transparent via-purple-500 to-transparent"></div>
                         </div>
                     </div>
 
@@ -108,7 +108,7 @@ function SelectionPage() {
                     <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
                         {/* Explore Films Button */}
                         <div className="group relative">
-                            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-500 glow-animation"></div>
+                            <div className="absolute -inset-1 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-500 glow-animation"></div>
                             <button
                                 onClick={() => console.log('Explore Films clicked')}
                                 className="cursor-pointer relative glass-effect px-12 py-6 rounded-2xl overflow-hidden transform transition-all duration-300 hover:scale-105 active:scale-95"
@@ -119,7 +119,7 @@ function SelectionPage() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                     </svg>
                                     <div className="text-left">
-                                        <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                                        <div className="text-2xl font-bold bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                                             Explore Films
                                         </div>
                                         <div className="text-sm text-gray-400 mt-1">Discover amazing content</div>
@@ -130,7 +130,7 @@ function SelectionPage() {
 
                         {/* Publish Films Button */}
                         <div className="group relative">
-                            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-600 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-500 glow-animation" style={{ animationDelay: '1.5s' }}></div>
+                            <div className="absolute -inset-1 bg-linear-to-r from-blue-600 via-cyan-600 to-teal-600 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-500 glow-animation" style={{ animationDelay: '1.5s' }}></div>
                             <button
                                 onClick={() => console.log('Publish Films clicked')}
                                 className="cursor-pointer relative glass-effect px-12 py-6 rounded-2xl overflow-hidden transform transition-all duration-300 hover:scale-105 active:scale-95"
@@ -141,7 +141,7 @@ function SelectionPage() {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                                     </svg>
                                     <div className="text-left">
-                                        <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                                        <div className="text-2xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                                             Publish Films
                                         </div>
                                         <div className="text-sm text-gray-400 mt-1">Share your masterpiece</div>
