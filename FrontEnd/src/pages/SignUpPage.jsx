@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
 export default function SignupPage() {
+    const [showPassword, setShowPassword] = useState(false);
+
     const [formData, setFormData] = useState({
         userName: '',
         password: '',
         companyName: ''
     });
-    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -60,7 +61,7 @@ export default function SignupPage() {
             <div className="relative z-10 w-full max-w-md">
                 {/* Logo/Title Section */}
                 <div className="text-center mb-8">
-                    <div className="inline-block p-3 bg-gradient-to-br from-purple-500 to-blue-500 rounded-2xl mb-4">
+                    <div className="inline-block p-3 bg-linear-to-br from-purple-500 to-blue-500 rounded-2xl mb-4">
                         <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"></path>
                         </svg>
@@ -70,7 +71,7 @@ export default function SignupPage() {
                 </div>
 
                 {/* Signup Form */}
-                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-8 shadow-2xl">
+                <div className="bg-linear-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-8 shadow-2xl">
                     <div className="space-y-5">
                         {/* Username Field */}
                         <div>
@@ -164,7 +165,7 @@ export default function SignupPage() {
                         {/* Submit Button */}
                         <button
                             onClick={handleSubmit}
-                            className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 hover:scale-[1.02] active:scale-95 shadow-lg hover:shadow-xl"
+                            className="w-full bg-linear-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-200 hover:scale-[1.02] active:scale-95 shadow-lg hover:shadow-xl"
                         >
                             Create Account
                         </button>
