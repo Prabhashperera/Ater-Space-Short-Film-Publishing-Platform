@@ -9,10 +9,27 @@ export default function SignupPage() {
         companyName: ''
     });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Form submitted:', formData);
-        // Add your signup logic here
+    const handleSubmit = async (e) => {
+        try {
+            e.preventDefault();
+            const response = await fetch('http://localhost:5000/api/user/create', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+
+            const backData = await response.json();
+
+            if (response.ok) {
+                console.log('✅ Signup successful:', backData);
+            } else {
+                console.error('❌ Signup failed:', backData.message);
+            }
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const handleChange = (e) => {
