@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 
 function SelectionPage() {
     return (
@@ -109,45 +111,49 @@ function SelectionPage() {
                         {/* Explore Films Button */}
                         <div className="group relative">
                             <div className="absolute -inset-1 bg-linear-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-500 glow-animation"></div>
-                            <button
-                                onClick={() => console.log('Explore Films clicked')}
-                                className="cursor-pointer relative glass-effect px-12 py-6 rounded-2xl overflow-hidden transform transition-all duration-300 hover:scale-105 active:scale-95"
-                            >
-                                <div className="absolute inset-0 btn-shimmer"></div>
-                                <div className="relative flex items-center gap-4">
-                                    <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                    </svg>
-                                    <div className="text-left">
-                                        <div className="text-2xl font-bold bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                                            Explore Films
+                            <Link to={"/home"}>
+                                <button
+                                    onClick={() => console.log('Explore Films clicked')}
+                                    className="cursor-pointer relative glass-effect px-12 py-6 rounded-2xl overflow-hidden transform transition-all duration-300 hover:scale-105 active:scale-95"
+                                >
+                                    <div className="absolute inset-0 btn-shimmer"></div>
+                                    <div className="relative flex items-center gap-4">
+                                        <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                        </svg>
+                                        <div className="text-left">
+                                            <div className="text-2xl font-bold bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                                                Explore Films
+                                            </div>
+                                            <div className="text-sm text-gray-400 mt-1">Discover amazing content</div>
                                         </div>
-                                        <div className="text-sm text-gray-400 mt-1">Discover amazing content</div>
                                     </div>
-                                </div>
-                            </button>
+                                </button>
+                            </Link>
                         </div>
 
                         {/* Publish Films Button */}
                         <div className="group relative">
                             <div className="absolute -inset-1 bg-linear-to-r from-blue-600 via-cyan-600 to-teal-600 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-500 glow-animation" style={{ animationDelay: '1.5s' }}></div>
-                            <button
-                                onClick={() => console.log('Publish Films clicked')}
-                                className="cursor-pointer relative glass-effect px-12 py-6 rounded-2xl overflow-hidden transform transition-all duration-300 hover:scale-105 active:scale-95"
-                            >
-                                <div className="absolute inset-0 btn-shimmer" style={{ animationDelay: '1s' }}></div>
-                                <div className="relative flex items-center gap-4">
-                                    <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                                    </svg>
-                                    <div className="text-left">
-                                        <div className="text-2xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                                            Publish Films
+                            <Link to={"/signup"}>
+                                <button
+                                    onClick={() => console.log('Publish Films clicked')}
+                                    className="cursor-pointer relative glass-effect px-12 py-6 rounded-2xl overflow-hidden transform transition-all duration-300 hover:scale-105 active:scale-95"
+                                >
+                                    <div className="absolute inset-0 btn-shimmer" style={{ animationDelay: '1s' }}></div>
+                                    <div className="relative flex items-center gap-4">
+                                        <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                                        </svg>
+                                        <div className="text-left">
+                                            <div className="text-2xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                                                Publish Films
+                                            </div>
+                                            <div className="text-sm text-gray-400 mt-1">Share your masterpiece</div>
                                         </div>
-                                        <div className="text-sm text-gray-400 mt-1">Share your masterpiece</div>
                                     </div>
-                                </div>
-                            </button>
+                                </button>
+                            </Link>
                         </div>
                     </div>
 
