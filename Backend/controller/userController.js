@@ -7,6 +7,7 @@ export const signUp = async (req, res) => {
     const newUser = new UserModel({
       userName: req.body.userName,
       password: req.body.password,
+      comapny: req.body.company
     });
     const savedData = await newUser.save(newUser);
     res.status(201).json({

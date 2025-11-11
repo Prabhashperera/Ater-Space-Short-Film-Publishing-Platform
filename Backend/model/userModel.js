@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const userModel = mongoose.Schema({
   userName: String,
+  company: String,
   password: String,
 });
 
