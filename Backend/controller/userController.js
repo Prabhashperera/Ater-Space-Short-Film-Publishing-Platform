@@ -1,6 +1,7 @@
 import UserModel from "../model/userModel.js"
 import jwt from 'jsonwebtoken'
 
+// Signup Function
 export const signUp = async (req, res) => {
   try {
     const newUser = new UserModel({
@@ -21,7 +22,7 @@ export const signUp = async (req, res) => {
 };
 
 // Login Function
-const login = async (req, res) => {
+export const login = async (req, res) => {
   try {
     const userName = req.body.userName
     const password = req.body.password
