@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
@@ -9,6 +9,9 @@ export default function LoginPage() {
         password: '',
         companyName: ''
     });
+
+    const navigate = useNavigate()
+
 
     const handleSubmit = async (e) => {
         try {
@@ -22,6 +25,7 @@ export default function LoginPage() {
             });
             const resData = await response.json();
             localStorage.setItem('accessToken', resData.token);
+            navigate('/home')
         } catch (error) {
             console.error(error);
         }
