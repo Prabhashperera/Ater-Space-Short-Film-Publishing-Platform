@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-
-export default function SignupPage() {
+export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
 
     const [formData, setFormData] = useState({
@@ -14,21 +13,15 @@ export default function SignupPage() {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault();
-            const response = await fetch('http://localhost:5000/api/user/signup', {
+            const response = await fetch('http://localhost:5000/api/user/login', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(formData)
             });
-
-            const backData = await response.json();
-
-            if (response.ok) {
-                console.log('Signup successful:', backData);
-            } else {
-                console.error('Signup failed:', backData.message);
-            }
+            const resData = await response.json();
+            localStorage.setItem('accessToken', resData.token);
         } catch (error) {
             console.error(error);
         }
@@ -85,8 +78,8 @@ export default function SignupPage() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"></path>
                         </svg>
                     </div>
-                    <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
-                    <p className="text-gray-400 text-sm">Join us and start your journey</p>
+                    <h1 className="text-3xl font-bold text-white mb-2">Login Into Your Account</h1>
+                    <p className="text-gray-400 text-sm">Welcome Again Dear</p>
                 </div>
 
                 {/* Signup Form */}
@@ -116,7 +109,7 @@ export default function SignupPage() {
                             </div>
                         </div>
 
-                        {/* Company Name Field */}
+                        {/* Company Name Field
                         <div>
                             <label htmlFor="companyName" className="block text-sm font-medium text-gray-300 mb-2">
                                 Company Name
@@ -138,7 +131,7 @@ export default function SignupPage() {
                                     required
                                 />
                             </div>
-                        </div>
+                        </div> */}
 
                         {/* Password Field */}
                         <div>
@@ -219,9 +212,9 @@ export default function SignupPage() {
                     {/* Sign In Link */}
                     <div className="mt-6 text-center text-sm text-gray-400">
                         Already have an account?{' '}
-                        <Link to={'/login'}>
+                        <Link to={'/signup'}>
                             <span className="text-purple-400 hover:text-purple-300 font-medium transition-colors">
-                                Sign in
+                                Sign Up
                             </span>
                         </Link>
                     </div>
