@@ -51,8 +51,6 @@ const HomePage = () => {
 
             {/* Film Sections */}
 
-            {/* Floating Upload Button */}
-
             {/* Upload Modal */}
             <UploadModal />
 
