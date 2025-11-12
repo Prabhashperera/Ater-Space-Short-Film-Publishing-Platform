@@ -1,132 +1,52 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Star, Plus, ChevronLeft, ChevronRight, Menu, X, Play, Info } from 'lucide-react';
 import FilmCard from '../components/FilmCard';
+import Header from '../components/Header';
 
 const HomePage = () => {
     const [showUploadModal, setShowUploadModal] = useState(false);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     // Dummy film data
-    const bestRatedFilms = [
-        { id: 1, title: "Echoes of Tomorrow", rating: 4.8, thumbnail: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&h=600&fit=crop" },
-        { id: 2, title: "Silent Horizons", rating: 4.7, thumbnail: "https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=400&h=600&fit=crop" },
-        { id: 3, title: "The Last Frame", rating: 4.9, thumbnail: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&h=600&fit=crop" },
-        { id: 4, title: "Midnight Canvas", rating: 4.6, thumbnail: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&h=600&fit=crop" },
-        { id: 5, title: "Fragments", rating: 4.8, thumbnail: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop" },
-        { id: 6, title: "Urban Dreams", rating: 4.5, thumbnail: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&h=600&fit=crop" },
-    ];
+    // const bestRatedFilms = [
+    //     { id: 1, title: "Echoes of Tomorrow", rating: 4.8, thumbnail: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&h=600&fit=crop" },
+    //     { id: 2, title: "Silent Horizons", rating: 4.7, thumbnail: "https://images.unsplash.com/photo-1594908900066-3f47337549d8?w=400&h=600&fit=crop" },
+    //     { id: 3, title: "The Last Frame", rating: 4.9, thumbnail: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&h=600&fit=crop" },
+    //     { id: 4, title: "Midnight Canvas", rating: 4.6, thumbnail: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&h=600&fit=crop" },
+    //     { id: 5, title: "Fragments", rating: 4.8, thumbnail: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop" },
+    //     { id: 6, title: "Urban Dreams", rating: 4.5, thumbnail: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&h=600&fit=crop" },
+    // ];
 
-    const newFilms = [
-        { id: 7, title: "Dawn's Light", rating: 4.3, thumbnail: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&h=600&fit=crop" },
-        { id: 8, title: "City Pulse", rating: 4.4, thumbnail: "https://images.unsplash.com/photo-1574267432644-f771a72b8695?w=400&h=600&fit=crop" },
-        { id: 9, title: "Neon Nights", rating: 4.2, thumbnail: "https://images.unsplash.com/photo-1560109947-543149eceb16?w=400&h=600&fit=crop" },
-        { id: 10, title: "River's Edge", rating: 4.5, thumbnail: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=400&h=600&fit=crop" },
-        { id: 11, title: "Wavelength", rating: 4.1, thumbnail: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=600&fit=crop" },
-        { id: 12, title: "Ember", rating: 4.6, thumbnail: "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=400&h=600&fit=crop" },
-    ];
+    // const newFilms = [
+    //     { id: 7, title: "Dawn's Light", rating: 4.3, thumbnail: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=400&h=600&fit=crop" },
+    //     { id: 8, title: "City Pulse", rating: 4.4, thumbnail: "https://images.unsplash.com/photo-1574267432644-f771a72b8695?w=400&h=600&fit=crop" },
+    //     { id: 9, title: "Neon Nights", rating: 4.2, thumbnail: "https://images.unsplash.com/photo-1560109947-543149eceb16?w=400&h=600&fit=crop" },
+    //     { id: 10, title: "River's Edge", rating: 4.5, thumbnail: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=400&h=600&fit=crop" },
+    //     { id: 11, title: "Wavelength", rating: 4.1, thumbnail: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=600&fit=crop" },
+    //     { id: 12, title: "Ember", rating: 4.6, thumbnail: "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=400&h=600&fit=crop" },
+    // ];
 
-    const shortFilms = [
-        { id: 13, title: "Five Minutes", rating: 4.4, thumbnail: "https://images.unsplash.com/photo-1512070679279-8988d32161be?w=400&h=600&fit=crop" },
-        { id: 14, title: "The Wait", rating: 4.7, thumbnail: "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=400&h=600&fit=crop" },
-        { id: 15, title: "Solitude", rating: 4.3, thumbnail: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=400&h=600&fit=crop" },
-        { id: 16, title: "Coffee Break", rating: 4.5, thumbnail: "https://images.unsplash.com/photo-1595769816263-9b910be24d5f?w=400&h=600&fit=crop" },
-        { id: 17, title: "Brief Encounter", rating: 4.2, thumbnail: "https://images.unsplash.com/photo-1577915509670-25e4d93df374?w=400&h=600&fit=crop" },
-        { id: 18, title: "Momentum", rating: 4.6, thumbnail: "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?w=400&h=600&fit=crop" },
-    ];
+    // const shortFilms = [
+    //     { id: 13, title: "Five Minutes", rating: 4.4, thumbnail: "https://images.unsplash.com/photo-1512070679279-8988d32161be?w=400&h=600&fit=crop" },
+    //     { id: 14, title: "The Wait", rating: 4.7, thumbnail: "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=400&h=600&fit=crop" },
+    //     { id: 15, title: "Solitude", rating: 4.3, thumbnail: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=400&h=600&fit=crop" },
+    //     { id: 16, title: "Coffee Break", rating: 4.5, thumbnail: "https://images.unsplash.com/photo-1595769816263-9b910be24d5f?w=400&h=600&fit=crop" },
+    //     { id: 17, title: "Brief Encounter", rating: 4.2, thumbnail: "https://images.unsplash.com/photo-1577915509670-25e4d93df374?w=400&h=600&fit=crop" },
+    //     { id: 18, title: "Momentum", rating: 4.6, thumbnail: "https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?w=400&h=600&fit=crop" },
+    // ];
 
-    const longFilms = [
-        { id: 19, title: "The Journey Home", rating: 4.8, thumbnail: "https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?w=400&h=600&fit=crop" },
-        { id: 20, title: "Chronicles", rating: 4.6, thumbnail: "https://images.unsplash.com/photo-1508712800480-297fa8a3ea43?w=400&h=600&fit=crop" },
-        { id: 21, title: "Infinite Roads", rating: 4.7, thumbnail: "https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=400&h=600&fit=crop" },
-        { id: 22, title: "Beyond the Stars", rating: 4.9, thumbnail: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=400&h=600&fit=crop" },
-        { id: 23, title: "Legacy", rating: 4.5, thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop" },
-        { id: 24, title: "The Odyssey", rating: 4.8, thumbnail: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop" },
-    ];
-
-    const FilmSection = ({ title, films }) => {
-        const scrollRef = useRef(null);
-
-        const scroll = (direction) => {
-            if (scrollRef.current) {
-                const scrollAmount = direction === 'left' ? -400 : 400;
-                scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
-        };
-
-        return (
-            <div className="mb-10 md:mb-16">
-                <div className="flex justify-between items-center mb-4 px-4 md:px-12">
-                    <h2 className="text-white text-xl md:text-2xl font-semibold">{title}</h2>
-                    <button className="text-gray-400 hover:text-white transition-colors duration-200 text-xs md:text-sm font-medium flex items-center gap-1 group">
-                        View More
-                        <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-                    </button>
-                </div>
-                <div className="relative group/section px-4 md:px-12">
-                    <button
-                        onClick={() => scroll('left')}
-                        className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/80 hover:bg-black text-white p-2 rounded-full opacity-0 group-hover/section:opacity-100 transition-all duration-300 ml-8 items-center justify-center backdrop-blur-sm"
-                    >
-                        <ChevronLeft className="w-6 h-6" />
-                    </button>
-                    <div
-                        ref={scrollRef}
-                        className="flex gap-3 md:gap-4 overflow-x-auto scrollbar-hide scroll-smooth pb-4"
-                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                    >
-                        {films.map(film => (
-                            <FilmCard key={film.id} film={film} />
-                        ))}
-                    </div>
-                    <button
-                        onClick={() => scroll('right')}
-                        className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/80 hover:bg-black text-white p-2 rounded-full opacity-0 group-hover/section:opacity-100 transition-all duration-300 mr-8 items-center justify-center backdrop-blur-sm"
-                    >
-                        <ChevronRight className="w-6 h-6" />
-                    </button>
-                </div>
-            </div>
-        );
-    };
+    // const longFilms = [
+    //     { id: 19, title: "The Journey Home", rating: 4.8, thumbnail: "https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?w=400&h=600&fit=crop" },
+    //     { id: 20, title: "Chronicles", rating: 4.6, thumbnail: "https://images.unsplash.com/photo-1508712800480-297fa8a3ea43?w=400&h=600&fit=crop" },
+    //     { id: 21, title: "Infinite Roads", rating: 4.7, thumbnail: "https://images.unsplash.com/photo-1514306191717-452ec28c7814?w=400&h=600&fit=crop" },
+    //     { id: 22, title: "Beyond the Stars", rating: 4.9, thumbnail: "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=400&h=600&fit=crop" },
+    //     { id: 23, title: "Legacy", rating: 4.5, thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop" },
+    //     { id: 24, title: "The Odyssey", rating: 4.8, thumbnail: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=600&fit=crop" },
+    // ];
 
     return (
         <div className="min-h-screen bg-black">
             {/* Header */}
-            <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black via-black/80 to-transparent backdrop-blur-sm">
-                <nav className="flex justify-between items-center px-4 md:px-12 py-5">
-                    <div className="text-white text-2xl md:text-3xl font-bold tracking-tight">
-                        ATER<span className="text-red-600">SPACE</span>
-                    </div>
-
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:flex gap-8 items-center">
-                        <a href="#" className="text-white font-medium hover:text-gray-300 transition-colors duration-200">Home</a>
-                        <a href="#" className="text-gray-400 font-medium hover:text-white transition-colors duration-200">Explore</a>
-                        <a href="#" className="text-gray-400 font-medium hover:text-white transition-colors duration-200">My Films</a>
-                        <a href="#" className="text-gray-400 font-medium hover:text-white transition-colors duration-200">Profile</a>
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        className="md:hidden text-white"
-                    >
-                        {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                    </button>
-                </nav>
-
-                {/* Mobile Navigation */}
-                {mobileMenuOpen && (
-                    <div className="md:hidden bg-black/98 px-4 py-6 border-t border-white/10">
-                        <div className="flex flex-col gap-4">
-                            <a href="#" className="text-white font-medium hover:text-gray-300 transition-colors duration-200">Home</a>
-                            <a href="#" className="text-gray-400 font-medium hover:text-white transition-colors duration-200">Explore</a>
-                            <a href="#" className="text-gray-400 font-medium hover:text-white transition-colors duration-200">My Films</a>
-                            <a href="#" className="text-gray-400 font-medium hover:text-white transition-colors duration-200">Profile</a>
-                        </div>
-                    </div>
-                )}
-            </header>
+            <Header />
 
             {/* Hero Section */}
             <div className="relative h-screen overflow-hidden">
@@ -179,12 +99,6 @@ const HomePage = () => {
             </div>
 
             {/* Film Sections */}
-            <div className="pb-20 pt-12 md:pt-16 bg-black">
-                <FilmSection title="Best Rated Films" films={bestRatedFilms} />
-                <FilmSection title="New Films" films={newFilms} />
-                <FilmSection title="Short Films" films={shortFilms} />
-                <FilmSection title="Long Films" films={longFilms} />
-            </div>
 
             {/* Floating Upload Button */}
             <button
